@@ -12,3 +12,7 @@
 
 - gradle clean test -Dcurrencyrule=ALL
 
+Информация о статусе выполняемых тестов будет доступна в процессе запуска, а также build\reports\tests\test\index.html. 
+Например:
+- успешный прогон http://joxi.ru/eAO6qz7h9n0ZE2
+- прогон с ошибкой http://joxi.ru/YmEpVznuw6d3kr
