@@ -65,15 +65,15 @@ public class OAuth2Test {
     }
 
     @Test
-    public void forbiddenOAuth2() throws Exception {
+    public void expiredTokenOAuth2() throws Exception {
         given()
                 .contentType(ContentType.JSON)
                 .auth()
-                .oauth2("eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjJkMmUyZTc3NDJjYTgxNjkxNDg4N2IwNjc1NjY1MTgxYTk4M2ZmMTkxZGJiZmFlZDk5MjEzM2MwZjI1ZDAyMTQ5OTZjZGRiOGI5ZGQ5YWU4In0.eyJhdWQiOiJmcm9udF8yZDZiMGE4MzkxNzQyZjVkNzg5ZDdkOTE1NzU1ZTA5ZSIsImp0aSI6IjJkMmUyZTc3NDJjYTgxNjkxNDg4N2IwNjc1NjY1MTgxYTk4M2ZmMTkxZGJiZmFlZDk5MjEzM2MwZjI1ZDAyMTQ5OTZjZGRiOGI5ZGQ5YWU4IiwiaWF0IjoxNTc0Nzc5MDI3LCJuYmYiOjE1NzQ3NzkwMjcsImV4cCI6MTU3NDg2NTQyNywic3ViIjoiIiwic2NvcGVzIjpbImd1ZXN0OmRlZmF1bHQiXX0.vK62dwRT-q8svIi8xjQIf8O17OjCt3xTbftL1JyEtdV8BtZI2ehRDIXsfY_YCfAucIcUq8HekJuIKFbn-adI5Ae_vWDxUV6cH_DLfI6CCVoZUbKQ8sVOD2iXORQQvA_xwaG-iuoQkpz-dRl9zVa72JXdbSiam75o0SLa4pZS3-s")
+                .oauth2("eyJ1eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjdhODQ1ZTZiYzc3ZDNkZGI5N2E3NjliMmMxODI0ODJkMTA0YTIwMjlkNTYzOWE5NzAwYmNjNzYxY2Q5OTU0MTA4OTg0ZTVmODQ3NGQzMGFiIn0.eyJhdWQiOiJmcm9udF8yZDZiMGE4MzkxNzQyZjVkNzg5ZDdkOTE1NzU1ZTA5ZSIsImp0aSI6IjdhODQ1ZTZiYzc3ZDNkZGI5N2E3NjliMmMxODI0ODJkMTA0YTIwMjlkNTYzOWE5NzAwYmNjNzYxY2Q5OTU0MTA4OTg0ZTVmODQ3NGQzMGFiIiwiaWF0IjoxNTc1MTE3Nzc3LCJuYmYiOjE1NzUxMTc3NzcsImV4cCI6MTU3NTIwNDE3Nywic3ViIjoiMjQxNyIsInNjb3BlcyI6WyJib251czpyZWFkIiwiZ2FtZTpyZWFkIiwiZ2FtZV9oaXN0b3J5OnJlYWQiLCJqYWNrcG90OnJlYWQiLCJwYXltZW50OnJlYWQiLCJwbGF5ZXI6cmVhZCIsIndpbm5lcjpyZWFkIiwiY2FzaW5vOnJlYWQiLCJtZXNzYWdlOnJlYWQiLCJmYXE6cmVhZCIsImxveWFsdHk6cmVhZCIsImdhbWU6d3JpdGUiLCJwYXltZW50OndyaXRlIiwicGxheWVyOndyaXRlIiwibWVzc2FnZTp3cml0ZSJdfQ.sCAgcXEnf9pujacHL4B8q7_JOUC5CzZgRk500T2-K6HeJVS70mY--qfLarlvBP8a1iPVmg1wRED8U0gdkk8gJ8VAYOA3dzM1haJeOuScmz1AihmTHnB2PgG8JV_ZX8dI1i0vQqQ9Vuu-1MopdfEbOT98uOSRv0oJM-DD8XZ3zkI")
                 .expect()
-                .statusCode(403)
+                .statusCode(401)
                 .when()
-                .get("/v2/players");
+                .get(playersProtectedResourcePath);
     }
 
 }

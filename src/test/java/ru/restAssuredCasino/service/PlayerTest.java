@@ -52,7 +52,8 @@ public class PlayerTest {
     @Test
     public void successCreatePlayer() throws Exception {
         //Because in system added only RUB at admins page http://test-app.d6.dev.devcaz.com/structure/nodeCurrency/admin
-        if (System.getProperty("currencyrule")==null || System.getProperty("currencyrule").equals("RUB")) {
+        String currencyRule = System.getProperty("currencyrule", "RUB");
+        if (currencyRule.equals("RUB")) {
             player.setCurrency(Currency.getInstance("RUB"));
         }
         String playerId = given()
